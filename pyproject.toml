@@ -1,6 +1,6 @@
 [project]
 name = "nice-path"
-version = "0.1.1"
+version = "0.1.2"
 description = "Nice formatting of paths"
 readme = "README.md"
 authors = [
