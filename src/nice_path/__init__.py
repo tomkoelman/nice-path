@@ -8,6 +8,9 @@ def nice_path(path: Path | str) -> str:
     try:
         rel = p.relative_to(home)
         rel_str = str(rel)
-        return "~/" + (rel_str if rel_str != "." else "")
+        if rel_str == ".":
+            return "~"
+        else:
+            return "~/" + rel_str
     except ValueError:
         return str(p)

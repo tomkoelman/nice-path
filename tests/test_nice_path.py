@@ -9,7 +9,7 @@ HOME = Path.home()
 
 
 def test_home_itself():
-    assert nice_path(HOME) == "~/"
+    assert nice_path(HOME) == "~"
 
 
 def test_path_under_home():
