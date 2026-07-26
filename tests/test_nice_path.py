@@ -1,9 +1,6 @@
 from pathlib import Path
 
-import pytest
-
 from nice_path import nice_path
-
 
 HOME = Path.home()
 
