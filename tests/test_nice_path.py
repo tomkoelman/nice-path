@@ -31,3 +31,16 @@ def test_path_outside_home():
 def test_resolves_dotdot():
     p = HOME / "a" / ".." / "b"
     assert nice_path(p) == "~/b"
+
+
+def test_symlinked_home(tmp_path, monkeypatch):
+    real_home = tmp_path / "real_home"
+    (real_home / "docs").mkdir(parents=True)
+    link_home = tmp_path / "link_home"
+    link_home.symlink_to(real_home)
+    monkeypatch.setenv("HOME", str(link_home))
+
+    assert nice_path("~") == "~"
+    assert nice_path("~/docs") == "~/docs"
+    assert nice_path(link_home / "docs") == "~/docs"
+    assert nice_path(real_home / "docs") == "~/docs"
